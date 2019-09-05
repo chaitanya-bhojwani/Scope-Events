@@ -131,6 +131,9 @@ session_start();
               <li class="nav-item">
                 <a class="nav-link" id="tab8" href="tabs2.php?id=8">Approve Requests</a>
               </li>
+                <li class="nav-item">
+                <a class="nav-link" id="tab9" href="tabs2.php?id=9">Course Files</a>
+              </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Logout (<?php
                     echo $_SESSION["loginid"];
@@ -326,6 +329,49 @@ session_start();
         });
     }
           </script>
+      <script language="javascript" type="text/javascript">
+    function download_course_files(a,b) {
+            jQuery.ajax({
+            url: 'download_uploaded_course_file.php',
+            type: 'POST', // GET or POST
+            data: 'param1='+a+'&param2='+b+'', // will be in $_POST on PHP side
+            success: function(data) { // data is the response from your php script
+                // This function is called if your AJAX query was successful
+                var link = document.createElement('a');
+                // Add the element to the DOM
+                link.setAttribute("type", "hidden"); // make it hidden if needed
+                link.target = '_blank';
+                link.href = data;
+                document.body.appendChild(link);
+                link.click();
+                link.remove();
+            },
+            error: function() {
+                // This callback is called if your AJAX query has failed
+                alert("Error!");
+            }
+        });
+    }
+          </script>
+      <script language="javascript" type="text/javascript">
+          function courseSearch(){
+              var course = document.getElementById("Course").value;
+              var slot = document.getElementById("Slots").value;
+              jQuery.ajax({
+            url: 'get_course_file.php',
+            type: 'POST', // GET or POST
+            data: 'param1='+course+'&param2='+slot+'', // will be in $_POST on PHP side
+            success: function(data) { // data is the response from your php script
+//                alert(data);
+                document.getElementById("tcontent").innerHTML = data;
+            },
+            error: function() {
+                // This callback is called if your AJAX query has failed
+                alert("Error!");
+            }
+          });
+          }
+		</script>
       <!--//////////////////////////////////////////footer/////////////////////////////////////////////////////-->
       <footer class="page-footer font-small blue">
 

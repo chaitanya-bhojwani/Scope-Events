@@ -129,6 +129,36 @@
                 </div>
         </div>';*/
 		break;
+            
+        case "9":
+        echo '<h4 align="center"><span class="badge" style="background-color: #26306D; padding: 10px; color: #fff; font-weight: 400">COURSE PAGE</span></h4><br>
+        <div class="card w-75 mb-6" style="margin:5px; border-color: #26306D">
+                <div class="card-header" style="text-transform: uppercase; letter-spacing: .1em; font-size: 15px; font-weight: 400; color: #26306D !important;">Check Status of Course Files</div>
+                <div class="card-body" align="left">
+                    <form action="#" method="POST" id="myform" onsubmit="event.preventDefault(); courseSearch()">
+        <table class="table table-borderless" align="Center">
+  <tbody>
+      <tr>
+      <td colspan="2"><label for="College123">Select Course: </label><select class="form-control" name="Course" id="Course" placeholder="Select Course: ">
+          <option>-</option>
+        <option>CSE 1007 - Java Programming</option></select></td>
+      </tr>
+      <tr>
+      <td colspan="2"><label for="Slots">Select Slot: </label><select class="form-control" name="Slots" id="Slots" placeholder="Select Slot: ">
+          <option>-</option>
+        <option>G1</option>
+        <option>G2</option></select></td>
+      </tr>
+    <br>
+    <tr>
+        <td colspan="2" align="Center"><input type="submit" class="btn btn-primary"><br></td>
+    </tr>
+  </tbody>
+</table>
+        </form>
+            </div>
+        </div>';
+		break; 
         
         default:
         echo 'Other Cases<br style="clear:both;" />';

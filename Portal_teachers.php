@@ -131,6 +131,9 @@ session_start();
               <li class="nav-item">
                 <a class="nav-link" id="tab7" href="tabs.php?id=7">Status</a>
               </li>
+            <li class="nav-item">
+                <a class="nav-link" id="tab9" href="tabs.php?id=9">Course Files</a>
+              </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Logout (<?php
                     echo $_SESSION["loginid"];
@@ -320,6 +323,33 @@ session_start();
         });
       }
           </script>
+            <script language="javascript" type="text/javascript">
+      function upload_course_files(a,b) {
+        var file_data = $("#avatar1").prop("files")[0]; // Getting the properties of file from file field
+        var form_data = new FormData(); // Creating object of FormData class
+        form_data.append("file", file_data) // Appending parameter named file with properties of file_field to form_data
+        form_data.append("request_id", a) // Adding extra parameters to form_data
+        form_data.append("type", b) // Adding extra parameters to form_data
+        jQuery.ajax({
+            url: "upload_course_file.php", // Upload Script
+            dataType: 'script',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_data, // Setting the data attribute of ajax with file_data
+            type: 'post',
+            success: function(data) { // data is the response from your php script
+                // This function is called if your AJAX query was successful
+                alert("File uploaded");
+                loadTabContent("tabs.php?id=9");
+            },
+            error: function() {
+                // This callback is called if your AJAX query has failed
+                alert("Error!");
+            }
+        });
+      }
+          </script>
       <script language="javascript" type="text/javascript">
     function delete_logic(a) {
             var confirm1= confirm("Confirm Delete ?");
@@ -359,6 +389,32 @@ session_start();
                 link.remove();
                 //$('<a href="'+ data +'" target="_blank"></a>').get(0).click();
                 loadTabContent("tabs.php?id=6");
+            },
+            error: function() {
+                // This callback is called if your AJAX query has failed
+                alert("Error!");
+            }
+        });
+    }
+          </script>
+                  <script language="javascript" type="text/javascript">
+    function download_course_files(a,b) {
+            jQuery.ajax({
+            url: 'download_uploaded_course_file.php',
+            type: 'POST', // GET or POST
+            data: 'param1='+a+'&param2='+b+'', // will be in $_POST on PHP side
+            success: function(data) { // data is the response from your php script
+                // This function is called if your AJAX query was successful
+                var link = document.createElement('a');
+                // Add the element to the DOM
+                link.setAttribute("type", "hidden"); // make it hidden if needed
+                link.target = '_blank';
+                link.href = data;
+                document.body.appendChild(link);
+                link.click();
+                link.remove();
+                //$('<a href="'+ data +'" target="_blank"></a>').get(0).click();
+                loadTabContent("tabs.php?id=9");
             },
             error: function() {
                 // This callback is called if your AJAX query has failed
