@@ -12,15 +12,15 @@ It provides functionalities like schedule an event, book a venue, get details ap
 
 ## Developed a single pager multi-tabs portal using Ajax tabs and JQuery.
 
-Frontend : \n
-    1. HTML 5 \n
-    2. CSS \n
-    3. JavaScript \n
-    4. JQuery \n
-    5. Ajax \n
+Frontend : <br>
+    1. HTML 5 <br>
+    2. CSS <br>
+    3. JavaScript <br>
+    4. JQuery <br>
+    5. Ajax <br>
 
-Backend : \n
-    6. Php \n
+Backend : <br>
+    6. Php <br>
 
-Database : \n
-    7. MySQL \n
+Database : <br>
+    7. MySQL <br>
